@@ -157,11 +157,19 @@ const Board = ({level}: any) => {
     }, [board, gameOver, isWin]);
 
     return (
-        <div>
-            <Timer time={time}/>
-            <div style={{margin: '0 auto', width: boardWidth + 'px'}}>
-                <button onClick={resetBoard}>Abandonner la partie</button>
-                <button onClick={revealBombs}>Tricher</button>
+        <div className="bg-gray-100 rounded-lg p-4">
+            <div className="flex justify-between items-center mb-4">
+                <Timer time={time}/>
+                <div className="space-x-4">
+                    <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={resetBoard}>Abandonner la partie
+                    </button>
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={revealBombs}>Tricher
+                    </button>
+                </div>
+            </div>
+            <div className="flex justify-center">
                 <table>
                     <tbody>
                     {board.map((row, y) => (
@@ -169,8 +177,16 @@ const Board = ({level}: any) => {
                             {row.map((cell, x) => (
                                 <td key={x}>
                                     <button
+                                        className={`${
+                                            cell && cell.revealed
+                                                ? cell.type === "bomb"
+                                                    ? "bg-red-600"
+                                                    : "bg-gray-400"
+                                                : "bg-gray-200 hover:bg-gray-300"
+                                        } text-white font-bold rounded`}
                                         style={{width: '25px', height: '25px'}}
                                         onClick={() => handleClick(x, y)}
+                                        disabled={cell && cell.revealed}
                                     >
                                         {cell && cell.revealed ? (
                                             cell.type === "bomb" ? "💣" : cell.count
@@ -185,6 +201,7 @@ const Board = ({level}: any) => {
             </div>
         </div>
     );
+
 };
 
 

@@ -1,13 +1,18 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 
-const Timer = ({time}: any) => {
+interface TimerProps {
+    time: number;
+}
+
+const Timer = ({time}: TimerProps) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
 
     return (
-        <Fragment>
-            <h2>Temps: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h2>
-        </Fragment>
+        <div className="bg-gray-100 p-2 rounded-lg text-center">
+            <p className="text-gray-800 font-bold text-lg mb-2">Temps: </p>
+            <p className="text-gray-800 font-bold text-3xl">{minutes}:{seconds < 10 ? `0${seconds}` : seconds}</p>
+        </div>
     );
 };
 
