@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ab3e82c4-c5e2-40c3-8fff-9f300198a70f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Options.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Options.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Timer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Timer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Options.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678295820480</updated>
       <workItem from="1678295822268" duration="1583000" />
-      <workItem from="1678297467347" duration="3399000" />
+      <workItem from="1678297467347" duration="4461000" />
     </task>
     <servers />
   </component>
