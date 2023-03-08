@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab3e82c4-c5e2-40c3-8fff-9f300198a70f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Options.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Options.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Timer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reportWebVitals.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Options.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Options.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Timer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Timer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +36,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1678295913" />
+                    <option name="branchName" value="feat/migrate-to-ts-and-imporve" />
+                    <option name="lastUsedInstant" value="1678298813" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1678295912" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1678295913" />
                   </RecentBranch>
                 </list>
               </option>
@@ -91,8 +91,9 @@
       <recent name="$PROJECT_DIR$/src/styles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/App" />
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/styles" />
+      <recent name="$PROJECT_DIR$/src/components/App" />
       <recent name="$PROJECT_DIR$/src/utils" />
     </key>
   </component>
@@ -105,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678295820480</updated>
       <workItem from="1678295822268" duration="1583000" />
-      <workItem from="1678297467347" duration="1234000" />
+      <workItem from="1678297467347" duration="1580000" />
     </task>
     <servers />
   </component>
