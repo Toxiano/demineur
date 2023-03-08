@@ -6,6 +6,8 @@ import TimerComponent from "./TimerComponent";
 import {Level} from "../interfaces/level";
 import {historyGame} from "../constants/storage";
 import {HistoryGame} from "../interfaces/storage";
+import Modal from "./Modal";
+import {base64ToJson, jsonToBase64} from "../utils/obj";
 
 
 interface BoardProps {
@@ -18,8 +20,10 @@ const BoardComponent = ({level}: BoardProps) => {
     const [gameOver, setGameOver] = useState(false);
     const [revealBombs, setRevealBombs] = useState(false);
     const [isCheat, setIsCheat] = useState(false);
+    const [continueGame, setContinuGame] = useState(false);
     const intervalRef = useRef<any>();
-    
+    const textAreaRef = useRef<any>();
+
 
     const handleClick = async (x: number, y: number) => {
         console.log(JSON.stringify(board))
@@ -59,7 +63,6 @@ const BoardComponent = ({level}: BoardProps) => {
             }
         }
     };
-
 
     const historyOfGame = (isWin: boolean) => {
         const history = JSON.parse(localStorage.getItem(historyGame) as string) as HistoryGame[];
@@ -104,6 +107,34 @@ const BoardComponent = ({level}: BoardProps) => {
 
     return (
         <div className="bg-gray-100 rounded-lg p-4">
+            {
+                continueGame &&
+                <Modal
+                    title={"Poursuivre le jeu plus tard, sauvegarder le code pour continuer le jeu"}
+                    body={
+                        <div className="w-full">
+                            <textarea className="w-full h-64" defaultValue={jsonToBase64(board)} ref={textAreaRef}/>
+                        </div>
+
+                    }
+                    footer={
+                        <>
+                            <button className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                                    onClick={() => setContinuGame(false)}>
+                                Fermer
+                            </button>
+                            <button
+                                className=" mr-3 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                                onClick={() => {
+                                    setBoard(base64ToJson(textAreaRef.current.value))
+                                    setContinuGame(false)
+                                }}>
+                                Continuer
+                            </button>
+                        </>
+                    }
+                />
+            }
             <div className="flex justify-center items-center">
                 <div className="space-x-4">
                     <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
@@ -127,7 +158,7 @@ const BoardComponent = ({level}: BoardProps) => {
                             </button>
                     }
                     <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                            onClick={resetBoard}>
+                            onClick={() => setContinuGame(true)}>
                         Poursuivre le jeu
                     </button>
                 </div>
