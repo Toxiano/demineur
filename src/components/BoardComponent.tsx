@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useRef, useState} from "react";
 import {boardHeights, boardWidths, numBombs} from "../constants/levels";
 import {countNeighbors, generateBoard, revealBombs, revealZeros} from "../utils/game";
 import {Status} from "../interfaces/status";
-import Timer from "./Timer";
+import TimerComponent from "./TimerComponent";
 import {GameContext} from "../HOC/game";
 
 
@@ -10,7 +10,7 @@ interface BoardProps {
     level: string;
 }
 
-const Board = ({level}: BoardProps) => {
+const BoardComponent = ({level}: BoardProps) => {
     const {test} = useContext(GameContext)
 
     const [board, setBoard] = useState(generateBoard(boardWidths[level], boardHeights[level], numBombs[level]));
@@ -22,7 +22,7 @@ const Board = ({level}: BoardProps) => {
     const handleClick = (x: any, y: any) => {
         if (gameOver) return;
         if (board[y][x] && board[y][x].type === Status.BOMB) {
-            alert("Game Over");
+            alert("SettingsComponent Over");
             setGameOver(true);
             setBoard(revealBombs(board));
         } else {
@@ -100,7 +100,7 @@ const Board = ({level}: BoardProps) => {
                 </div>
             </div>
             <div className="mb-4">
-                <Timer time={time}/>
+                <TimerComponent time={time}/>
             </div>
             <div className="flex justify-center">
                 <table>
@@ -138,4 +138,4 @@ const Board = ({level}: BoardProps) => {
 };
 
 
-export default Board;
+export default BoardComponent;

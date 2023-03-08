@@ -4,7 +4,7 @@ interface TimerProps {
     time: number;
 }
 
-const Timer = ({time}: TimerProps) => {
+const TimerComponent = ({time}: TimerProps) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
 
@@ -16,4 +16,4 @@ const Timer = ({time}: TimerProps) => {
     );
 };
 
-export default Timer;
+export default TimerComponent;
