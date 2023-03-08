@@ -1,6 +1,6 @@
 import {Status} from "../interfaces/status";
 
-export const generateBoard = (width: any, height: any, numBombs: any) => {
+export const generateBoard = (width: number, height: number, numBombs: number) => {
     const board = Array(height)
         .fill(null)
         .map(() => Array(width).fill(null));
@@ -19,8 +19,7 @@ export const generateBoard = (width: any, height: any, numBombs: any) => {
     return board;
 };
 
-
-export const countNeighbors = (x: any, y: any, board: any) => {
+export const countNeighbors = (x: number, y: number, board: any[][]) => {
     let neighbors = 0;
     for (let i = Math.max(0, y - 1); i <= Math.min(board.length - 1, y + 1); i++) {
         for (let j = Math.max(0, x - 1); j <= Math.min(board[0].length - 1, x + 1); j++) {
@@ -30,14 +29,16 @@ export const countNeighbors = (x: any, y: any, board: any) => {
     return neighbors;
 };
 
-export const revealZeros = (x: any, y: any, board: any) => {
+export const revealZeros = async (x: number, y: number, board: any[][]) => {
     let updatedBoard = [...board];
     for (let i = Math.max(0, y - 1); i <= Math.min(board.length - 1, y + 1); i++) {
+        // await sleep(1)
         for (let j = Math.max(0, x - 1); j <= Math.min(board[0].length - 1, x + 1); j++) {
+            // await sleep(1)
             if (!board[i][j] && board[i][j] !== Status.BOMB) {
                 updatedBoard[i][j] = {type: Status.EMPTY, revealed: true, count: countNeighbors(j, i, board)};
                 if (board[i][j] && board[i][j].count === 0) {
-                    revealZeros(j, i, board);
+                    await revealZeros(j, i, board);
                 }
             }
         }
@@ -45,12 +46,12 @@ export const revealZeros = (x: any, y: any, board: any) => {
     return updatedBoard
 };
 
-export const revealBombs = (board: any) => {
+export const revealHideBombs = (board: any[][], reveal: boolean) => {
     const updatedBoard = [...board];
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[0].length; j++) {
             if (board[i][j] && board[i][j].type === Status.BOMB) {
-                updatedBoard[i][j].revealed = true;
+                updatedBoard[i][j].revealed = reveal;
             }
         }
     }

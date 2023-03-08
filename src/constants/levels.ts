@@ -1,20 +1,23 @@
-export const boardWidths: any = {
-    easy: 9,
-    medium: 16,
-    expert: 22,
-    master: 30
+import {ILevel, Level} from "../interfaces/level";
+
+export const boardWidths: ILevel = {
+    [Level.EASY]: 9,
+    [Level.MEDIUM]: 16,
+    [Level.EXPERT]: 22,
+    [Level.MASTER]: 30
 };
 
-export const boardHeights: any = {
-    easy: 9,
-    medium: 16,
-    expert: 22,
-    master: 30
+export const boardHeights: ILevel = {
+    [Level.EASY]: 9,
+    [Level.MEDIUM]: 16,
+    [Level.EXPERT]: 22,
+    [Level.MASTER]: 30
 };
 
-export const numBombs: any = {
-    easy: 10,
-    medium: 40,
-    expert: 99,
-    master: 200
+export const numBombs: ILevel = {
+    [Level.EASY]: 10,
+    [Level.MEDIUM]: 40,
+    [Level.EXPERT]: 99,
+    [Level.MASTER]: 200
 };
+

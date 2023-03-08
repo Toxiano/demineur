@@ -1,87 +1,99 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {boardHeights, boardWidths, numBombs} from "../constants/levels";
-import {countNeighbors, generateBoard, revealBombs, revealZeros} from "../utils/game";
+import {countNeighbors, generateBoard, revealHideBombs, revealZeros} from "../utils/game";
 import {Status} from "../interfaces/status";
 import TimerComponent from "./TimerComponent";
-import {GameContext} from "../HOC/game";
+import {Level} from "../interfaces/level";
 
 
 interface BoardProps {
-    level: string;
+    level: Level
 }
 
 const BoardComponent = ({level}: BoardProps) => {
-    const {test} = useContext(GameContext)
-
-    const [board, setBoard] = useState(generateBoard(boardWidths[level], boardHeights[level], numBombs[level]));
+    const [board, setBoard] = useState<any[][]>(generateBoard(boardWidths[level], boardHeights[level], numBombs[level]));
     const [time, setTime] = useState(0);
     const [gameOver, setGameOver] = useState(false);
     const [isWin, setIsWin] = useState(false);
+    const [revealBombs, setRevealBombs] = useState(false);
     const intervalRef = useRef<any>();
 
-    const handleClick = (x: any, y: any) => {
+    const handleClick = async (x: number, y: number) => {
         if (gameOver) return;
-        if (board[y][x] && board[y][x].type === Status.BOMB) {
+        const cell = board[y][x];
+        if (cell && cell.type === Status.BOMB) {
             alert("SettingsComponent Over");
             setGameOver(true);
-            setBoard(revealBombs(board));
-        } else {
+            setTime(0);
+            setBoard(revealHideBombs(board, true));
+            return;
+        }
+        //optimization éviter de faire inutilement des copies
+        if (!cell) {
             const updatedBoard = [...board];
-            // console.log(numBombs[level])
-
-            // board.forEach(array => array.forEach(e => {
-            //   console.log(e);
-            //   if(e !== null) setIsWin(true)
-            // }))
-
-
-            if (!board[y][x]) {
-                updatedBoard[y][x] = {type: Status.EMPTY, revealed: true, count: countNeighbors(x, y, board)};
-            } else {
-                updatedBoard[y][x].revealed = true;
-            }
+            updatedBoard[y][x] = {
+                type: Status.EMPTY,
+                revealed: true,
+                count: countNeighbors(x, y, board)
+            };
             setBoard(updatedBoard);
-            if (board[y][x] && board[y][x].count === 0) {
-                setBoard(revealZeros(x, y, board))
+            if (updatedBoard[y][x].count === 0) {
+                setBoard(await revealZeros(x, y, updatedBoard));
+            }
+        } else if (!cell.revealed) {
+            const updatedCell = {...cell, revealed: true};
+            setBoard(prevBoard => {
+                const updatedRow = [...prevBoard[y]];
+                updatedRow[x] = updatedCell;
+                const updatedBoard = [...prevBoard];
+                updatedBoard[y] = updatedRow;
+                return updatedBoard;
+            });
+            if (cell.count === 0) {
+                setBoard(await revealZeros(x, y, board));
             }
         }
     };
 
 
-    const boardWidth = boardWidths[level] * 25
+    const historyOfGame = () => {
+
+
+    }
 
     const resetBoard = () => {
         setBoard(generateBoard(boardWidths[level], boardHeights[level], numBombs[level]));
         setTime(0);
         setGameOver(false);
         setIsWin(false);
-        clearInterval(intervalRef.current);
     };
 
-    useEffect(() => {
-        if (!gameOver) {
-            for (let i = 0; i < board.length; i++) {
-                for (let j = 0; j < board[0].length; j++) {
-                    if (board[i][j] && board[i][j].type !== Status.BOMB && !board[i][j].revealed) {
-                        console.log(board);
-                        setIsWin(true)
-                    }
-                }
-            }
-            if (isWin) {
-                alert("Vous avez gagné!");
-                clearInterval(intervalRef.current);
-            }
-        }
 
+    useEffect(() => {
         if (!gameOver) {
             intervalRef.current = setInterval(() => {
                 setTime(time => time + 1);
             }, 1000);
         }
-        return () => {
-            clearInterval(intervalRef.current);
-        };
+        return () => clearInterval(intervalRef.current);
+    }, [gameOver]);
+
+
+    useEffect(() => {
+        if (!gameOver) {
+            let winCount = 0
+            for (let i = 0; i < board.length; i++) {
+                for (let j = 0; j < board[0].length; j++) {
+                    if (board[i][j] && board[i][j].type !== Status.BOMB && board[i][j].revealed) {
+                        winCount++;
+                    }
+                }
+            }
+            if (winCount === boardWidths[level] * boardHeights[level] - numBombs[level]) {
+                alert("Vous avez gagné!");
+                clearInterval(intervalRef.current);
+            }
+        }
     }, [board, gameOver, isWin]);
 
     return (
@@ -92,11 +104,21 @@ const BoardComponent = ({level}: BoardProps) => {
                             onClick={resetBoard}>
                         Recommencer
                     </button>
-                    <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                            onClick={() => {
-                                setBoard(revealBombs(board))
-                            }}>Tricher
-                    </button>
+                    {
+                        !revealBombs ?
+                            <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                    onClick={() => {
+                                        setBoard(revealHideBombs(board, true));
+                                        setRevealBombs(true);
+                                    }}>Tricher
+                            </button> :
+                            <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                    onClick={() => {
+                                        setBoard(revealHideBombs(board, false));
+                                        setRevealBombs(false);
+                                    }}>Pas tricher
+                            </button>
+                    }
                 </div>
             </div>
             <div className="mb-4">
@@ -110,13 +132,7 @@ const BoardComponent = ({level}: BoardProps) => {
                             {row.map((cell, x) => (
                                 <td key={x}>
                                     <button
-                                        className={`${
-                                            cell && cell.revealed
-                                                ? cell.type === Status.BOMB
-                                                    ? "bg-red-600"
-                                                    : "bg-gray-400"
-                                                : "bg-gray-200 hover:bg-gray-300"
-                                        } text-white font-bold rounded`}
+                                        className={`bg-gray-200 hover:bg-gray-300 rounded text-white font-bold transition-colors duration-1000 ease-in-out ${cell && cell.revealed ? (cell.type === Status.BOMB ? 'bg-red-600' : 'bg-gray-400 cell-revealed') : ''}`}
                                         style={{width: '25px', height: '25px'}}
                                         onClick={() => handleClick(x, y)}
                                         disabled={cell && cell.revealed}

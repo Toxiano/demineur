@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ab3e82c4-c5e2-40c3-8fff-9f300198a70f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HOC/game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/HOC/GameContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BoardComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SettingsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SettingsComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/levels.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/levels.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/game/GamePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/game/GamePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/game/SetGamePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/game/SetGamePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/game.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678295820480</updated>
       <workItem from="1678295822268" duration="1583000" />
-      <workItem from="1678297467347" duration="7526000" />
+      <workItem from="1678297467347" duration="16362000" />
     </task>
     <servers />
   </component>

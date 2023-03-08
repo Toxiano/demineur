@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React, {SetStateAction, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {Level} from "../interfaces/level";
 
 const SettingsComponent = () => {
     const navigate = useNavigate();
-    const [level, setLevel] = useState("easy");
-
+    const [level, setLevel] = useState(Level.EASY);
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div>
             <div className="bg-gray-200 rounded-lg p-4">
                 <h1 className="text-3xl font-bold mb-4">Démineur</h1>
                 <div className="mb-4">
@@ -16,13 +16,13 @@ const SettingsComponent = () => {
                         name="level"
                         id="level"
                         value={level}
-                        onChange={e => setLevel(e.target.value)}
+                        onChange={e => setLevel(e.target.value as SetStateAction<Level>)}
                         className="border border-gray-400 rounded p-1"
                     >
-                        <option value="easy">Facile</option>
-                        <option value="medium">Moyen</option>
-                        <option value="expert">Expert</option>
-                        <option value="master">Maître</option>
+                        <option value={Level.EASY}>Facile</option>
+                        <option value={Level.MEDIUM}>Moyen</option>
+                        <option value={Level.EXPERT}>Expert</option>
+                        <option value={Level.EXPERT}>Maître</option>
                     </select>
                 </div>
                 <div className="flex justify-center">
