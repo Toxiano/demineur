@@ -9,8 +9,7 @@ const SettingsComponent = () => {
     return (
         <div>
             <div className="bg-gray-200 rounded-lg p-4">
-                <h1 className="text-3xl font-bold mb-4">Démineur</h1>
-                <div className="mb-4">
+                <div className="mb-4 flex justify-center">
                     <label className="mr-2 font-bold" htmlFor="level">Choisir le niveau:</label>
                     <select
                         name="level"

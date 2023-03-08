@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import SettingsComponent from "../../components/SettingsComponent";
+import {user} from "../../constants/storage";
 
 const SetGame = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState<string | null>(null);
 
     useEffect(() => {
-        setUsername(localStorage.getItem("user"));
+        setUsername(localStorage.getItem(user));
     }, [])
 
     return (

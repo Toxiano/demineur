@@ -14,6 +14,9 @@ export const GameProvider = ({children}: { children: React.ReactNode }) => {
         if (!localStorage.getItem(user) && !window.location.href.includes('/identify')) {
             window.location.href = '/identify'
         }
+        if (localStorage.getItem(user) && !localStorage.getItem(historyGame)) {
+            localStorage.setItem(historyGame, JSON.stringify([]))
+        }
         if (localStorage.getItem(user) && window.location.href.includes('/identify')) {
             window.location.href = '/'
         }

@@ -2,6 +2,7 @@ import BoardComponent from "../../components/BoardComponent";
 import React, {useEffect, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {Level} from "../../interfaces/level";
+import {user} from "../../constants/storage";
 
 const GamePage = () => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const GamePage = () => {
     const [username, setUsername] = useState<string | null>(null);
 
     useEffect(() => {
-        setUsername(localStorage.getItem("user"));
+        setUsername(localStorage.getItem(user));
     }, [])
 
     return (

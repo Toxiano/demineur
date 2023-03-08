@@ -4,6 +4,8 @@ import {countNeighbors, generateBoard, revealHideBombs, revealZeros} from "../ut
 import {Status} from "../interfaces/status";
 import TimerComponent from "./TimerComponent";
 import {Level} from "../interfaces/level";
+import {historyGame} from "../constants/storage";
+import {HistoryGame} from "../interfaces/storage";
 
 
 interface BoardProps {
@@ -14,15 +16,18 @@ const BoardComponent = ({level}: BoardProps) => {
     const [board, setBoard] = useState<any[][]>(generateBoard(boardWidths[level], boardHeights[level], numBombs[level]));
     const [time, setTime] = useState(0);
     const [gameOver, setGameOver] = useState(false);
-    const [isWin, setIsWin] = useState(false);
     const [revealBombs, setRevealBombs] = useState(false);
+    const [isCheat, setIsCheat] = useState(false);
     const intervalRef = useRef<any>();
+    
 
     const handleClick = async (x: number, y: number) => {
+        console.log(JSON.stringify(board))
         if (gameOver) return;
         const cell = board[y][x];
         if (cell && cell.type === Status.BOMB) {
             alert("SettingsComponent Over");
+            historyOfGame(false);
             setGameOver(true);
             setTime(0);
             setBoard(revealHideBombs(board, true));
@@ -56,16 +61,16 @@ const BoardComponent = ({level}: BoardProps) => {
     };
 
 
-    const historyOfGame = () => {
-
-
+    const historyOfGame = (isWin: boolean) => {
+        const history = JSON.parse(localStorage.getItem(historyGame) as string) as HistoryGame[];
+        history.push({time, level, cheat: isCheat, win: isWin});
+        localStorage.setItem(historyGame, JSON.stringify(history));
     }
 
     const resetBoard = () => {
         setBoard(generateBoard(boardWidths[level], boardHeights[level], numBombs[level]));
         setTime(0);
         setGameOver(false);
-        setIsWin(false);
     };
 
 
@@ -91,10 +96,11 @@ const BoardComponent = ({level}: BoardProps) => {
             }
             if (winCount === boardWidths[level] * boardHeights[level] - numBombs[level]) {
                 alert("Vous avez gagné!");
+                historyOfGame(true);
                 clearInterval(intervalRef.current);
             }
         }
-    }, [board, gameOver, isWin]);
+    }, [board, gameOver]);
 
     return (
         <div className="bg-gray-100 rounded-lg p-4">
@@ -109,6 +115,7 @@ const BoardComponent = ({level}: BoardProps) => {
                             <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                                     onClick={() => {
                                         setBoard(revealHideBombs(board, true));
+                                        setIsCheat(true);
                                         setRevealBombs(true);
                                     }}>Tricher
                             </button> :
@@ -119,6 +126,10 @@ const BoardComponent = ({level}: BoardProps) => {
                                     }}>Pas tricher
                             </button>
                     }
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={resetBoard}>
+                        Poursuivre le jeu
+                    </button>
                 </div>
             </div>
             <div className="mb-4">
