@@ -1,8 +1,9 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import {boardHeights, boardWidths, numBombs} from "../constants/levels";
 import {countNeighbors, generateBoard, revealBombs, revealZeros} from "../utils/game";
 import {Status} from "../interfaces/status";
 import Timer from "./Timer";
+import {GameContext} from "../HOC/game";
 
 
 interface BoardProps {
@@ -10,6 +11,8 @@ interface BoardProps {
 }
 
 const Board = ({level}: BoardProps) => {
+    const {test} = useContext(GameContext)
+
     const [board, setBoard] = useState(generateBoard(boardWidths[level], boardHeights[level], numBombs[level]));
     const [time, setTime] = useState(0);
     const [gameOver, setGameOver] = useState(false);
