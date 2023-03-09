@@ -15,7 +15,6 @@ export const generateBoard = (width: number, height: number, numBombs: number) =
             bombsPlaced++;
         }
     }
-
     return board;
 };
 

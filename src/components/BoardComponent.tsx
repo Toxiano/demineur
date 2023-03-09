@@ -26,7 +26,6 @@ const BoardComponent = ({level}: BoardProps) => {
 
 
     const handleClick = async (x: number, y: number) => {
-        console.log(JSON.stringify(board))
         if (gameOver) return;
         const cell = board[y][x];
         if (cell && cell.type === Status.BOMB) {
@@ -64,6 +63,37 @@ const BoardComponent = ({level}: BoardProps) => {
         }
     };
 
+    const handleFlag = (x: number, y: number) => {
+        const cpBoard = [...board]
+        if (cpBoard[y][x] && cpBoard[y][x].type === Status.FLAG) {
+            if (cpBoard[y][x].bomb) {
+                cpBoard[y][x] = {
+                    revealed: false,
+                    type: Status.BOMB,
+                }
+                setBoard(cpBoard);
+                return
+            }
+            cpBoard[y][x] = null
+            setBoard(cpBoard);
+            return
+        }
+        if (cpBoard[y][x] && cpBoard[y][x].type === Status.BOMB) {
+            cpBoard[y][x] = {
+                type: Status.FLAG,
+                revealed: true,
+                bomb: true
+            };
+            setBoard(cpBoard);
+            return
+        }
+        cpBoard[y][x] = {
+            type: Status.FLAG,
+            revealed: true,
+            bomb: false
+        }
+    }
+
     const historyOfGame = (isWin: boolean) => {
         const history = JSON.parse(localStorage.getItem(historyGame) as string) as HistoryGame[];
         history.push({time, level, cheat: isCheat, win: isWin});
@@ -76,6 +106,13 @@ const BoardComponent = ({level}: BoardProps) => {
         setGameOver(false);
     };
 
+    useEffect(() => {
+        const handleContextMenu = (e: any) => e.preventDefault()
+        document.addEventListener("contextmenu", handleContextMenu)
+        return () => {
+            document.removeEventListener("contextmenu", handleContextMenu)
+        }
+    }, [])
 
     useEffect(() => {
         if (!gameOver) {
@@ -176,12 +213,13 @@ const BoardComponent = ({level}: BoardProps) => {
                                     <button
                                         className={`bg-gray-200 hover:bg-gray-300 rounded text-white font-bold transition-colors duration-1000 ease-in-out ${cell && cell.revealed ? (cell.type === Status.BOMB ? 'bg-red-600' : 'bg-gray-400 cell-revealed') : ''}`}
                                         style={{width: '25px', height: '25px'}}
+                                        onContextMenu={() => handleFlag(x, y)}
                                         onClick={() => handleClick(x, y)}
                                         disabled={cell && cell.revealed}
                                     >
                                         {cell && cell.revealed ? (
-                                            cell.type === Status.BOMB ? "💣" : cell.count
-                                        ) : ""}
+                                            cell.type === Status.FLAG ? "⛳️" : cell.type === Status.BOMB ? "💣" : cell.count
+                                        ) : null}
                                     </button>
                                 </td>
                             ))}
