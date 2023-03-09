@@ -65,7 +65,7 @@ const BoardComponent = ({level}: BoardProps) => {
 
     const handleFlag = (x: number, y: number) => {
         const cpBoard = [...board]
-        if (cpBoard[y][x] && cpBoard[y][x].type === Status.FLAG) {
+        if (cpBoard[y][x] && cpBoard[y][x].flag) {
             if (cpBoard[y][x].bomb) {
                 cpBoard[y][x] = {
                     revealed: false,
@@ -80,17 +80,16 @@ const BoardComponent = ({level}: BoardProps) => {
         }
         if (cpBoard[y][x] && cpBoard[y][x].type === Status.BOMB) {
             cpBoard[y][x] = {
-                type: Status.FLAG,
-                revealed: true,
+                ...cpBoard[y][x],
+                flag: true,
                 bomb: true
             };
             setBoard(cpBoard);
             return
         }
         cpBoard[y][x] = {
-            type: Status.FLAG,
-            revealed: true,
-            bomb: false
+            ...cpBoard[y][x],
+            flag: true
         }
     }
 
@@ -217,8 +216,9 @@ const BoardComponent = ({level}: BoardProps) => {
                                         onClick={() => handleClick(x, y)}
                                         disabled={cell && cell.revealed}
                                     >
+                                        {cell?.flag ? "⛳️" : null}
                                         {cell && cell.revealed ? (
-                                            cell.type === Status.FLAG ? "⛳️" : cell.type === Status.BOMB ? "💣" : cell.count
+                                            cell.type === Status.BOMB ? !cell?.flag ? "💣" : null : !cell?.flag ? cell.count : null
                                         ) : null}
                                     </button>
                                 </td>
