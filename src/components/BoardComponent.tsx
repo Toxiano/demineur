@@ -214,7 +214,7 @@ const BoardComponent = ({level}: BoardProps) => {
                                         style={{width: '25px', height: '25px'}}
                                         onContextMenu={() => handleFlag(x, y)}
                                         onClick={() => handleClick(x, y)}
-                                        disabled={cell && cell.revealed}
+                                        disabled={(cell && cell.revealed) || cell?.flag}
                                     >
                                         {cell?.flag ? "⛳️" : null}
                                         {cell && cell.revealed ? (

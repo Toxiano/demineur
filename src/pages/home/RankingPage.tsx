@@ -70,23 +70,23 @@ const RankingPage = () => {
                         <div className="flex justify-center gap-2">
                             <button
                                 onClick={() => setLevel(Level.EASY)}
-                                className={`${level === Level.EASY ? 'bg-blue-500' : 'bg-blue-300'} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}>
-                                EASY
+                                className={`${level === Level.EASY ? 'bg-blue-700' : 'bg-blue-300'} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}>
+                                {Level.EASY}
                             </button>
                             <button
                                 onClick={() => setLevel(Level.MEDIUM)}
-                                className={`${level === Level.MEDIUM ? 'bg-blue-500' : 'bg-blue-300'} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}>
-                                MEDIUM
+                                className={`${level === Level.MEDIUM ? 'bg-blue-700' : 'bg-blue-300'} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}>
+                                {Level.MEDIUM}
                             </button>
                             <button
                                 onClick={() => setLevel(Level.EXPERT)}
-                                className={`${level === Level.EXPERT ? 'bg-blue-500' : 'bg-blue-300'} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}>
-                                EXPERT
+                                className={`${level === Level.EXPERT ? 'bg-blue-700' : 'bg-blue-300'} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}>
+                                {Level.EXPERT}
                             </button>
                             <button
                                 onClick={() => setLevel(Level.MASTER)}
-                                className={`${level === Level.MASTER ? 'bg-blue-500' : 'bg-blue-300'} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}>
-                                MASTER
+                                className={`${level === Level.MASTER ? 'bg-blue-700' : 'bg-blue-300'} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}>
+                                {Level.MASTER}
                             </button>
                         </div>
                         {

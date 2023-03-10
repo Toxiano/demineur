@@ -6,17 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ab3e82c4-c5e2-40c3-8fff-9f300198a70f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/BoardComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SettingsComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SettingsComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TableComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/storage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/storage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/game/GamePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/game/GamePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/HomePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/HistoryPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/game.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/RankingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/RankingPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +104,7 @@
       <workItem from="1678297467347" duration="21222000" />
       <workItem from="1678350045429" duration="3034000" />
       <workItem from="1678393069574" duration="2070000" />
-      <workItem from="1678456449784" duration="5282000" />
+      <workItem from="1678456449784" duration="6785000" />
     </task>
     <servers />
   </component>
