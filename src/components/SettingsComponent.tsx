@@ -21,7 +21,7 @@ const SettingsComponent = () => {
                         <option value={Level.EASY}>Facile</option>
                         <option value={Level.MEDIUM}>Moyen</option>
                         <option value={Level.EXPERT}>Expert</option>
-                        <option value={Level.EXPERT}>Maître</option>
+                        <option value={Level.MASTER}>Maître</option>
                     </select>
                 </div>
                 <div className="flex justify-center">

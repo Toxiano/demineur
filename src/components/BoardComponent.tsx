@@ -29,7 +29,7 @@ const BoardComponent = ({level}: BoardProps) => {
         if (gameOver) return;
         const cell = board[y][x];
         if (cell && cell.type === Status.BOMB) {
-            alert("SettingsComponent Over");
+            alert("Vous avez perdu");
             historyOfGame(false);
             setGameOver(true);
             setTime(0);

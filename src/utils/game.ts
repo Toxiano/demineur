@@ -31,9 +31,7 @@ export const countNeighbors = (x: number, y: number, board: any[][]) => {
 export const revealZeros = async (x: number, y: number, board: any[][]) => {
     let updatedBoard = [...board];
     for (let i = Math.max(0, y - 1); i <= Math.min(board.length - 1, y + 1); i++) {
-        // await sleep(1)
         for (let j = Math.max(0, x - 1); j <= Math.min(board[0].length - 1, x + 1); j++) {
-            // await sleep(1)
             if (!board[i][j] && board[i][j] !== Status.BOMB) {
                 updatedBoard[i][j] = {type: Status.EMPTY, revealed: true, count: countNeighbors(j, i, board)};
                 if (board[i][j] && board[i][j].count === 0) {

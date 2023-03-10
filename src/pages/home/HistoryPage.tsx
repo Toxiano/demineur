@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 import TableComponent from "../../components/TableComponent";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {historyGame, user} from "../../constants/storage";
 import {HistoryGame} from "../../interfaces/storage";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 
-const Home = () => {
+const HistoryPage = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState<string | null>(null);
     const [historic, setHistoric] = useState<HistoryGame[] | []>([]);
@@ -18,7 +20,13 @@ const Home = () => {
     return (
         <>
             <div className="flex justify-between items-center m-10">
-                <div></div>
+                <Link to="..">
+                    <FontAwesomeIcon
+                        icon={faArrowLeft}
+                        style={{fontSize: 50, color: 'black'}}
+                        className="m-10 hover:scale-125 transition-all duration-200 ease-in-out"
+                    />
+                </Link>
                 <h1 className="text-2xl font-bold mb-4 text-center">Salut {username}, ça c'est ton historique de
                     jeu</h1>
                 <div>
@@ -29,9 +37,9 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-            {historic.length > 0 ? <TableComponent data={historic}/> : null}
+            <TableComponent data={historic}/>
         </>
     )
 }
 
-export default Home
+export default HistoryPage;

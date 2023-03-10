@@ -2,7 +2,7 @@ import React from 'react'
 import {HistoryGame} from "../interfaces/storage";
 
 interface TableComponentProps {
-    data: HistoryGame[]
+    data: HistoryGame[],
 }
 
 const TableComponent = ({data}: TableComponentProps) => {
@@ -45,6 +45,16 @@ const TableComponent = ({data}: TableComponentProps) => {
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    {
+                                        data.length === 0 && (
+                                            <tr>
+                                                <td colSpan={4}
+                                                    className="text-center text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    Aucune partie enregistrée
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
                                     {
                                         data.map((item, index) => {
                                             return (
