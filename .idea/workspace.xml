@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ab3e82c4-c5e2-40c3-8fff-9f300198a70f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BoardComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardComponent.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +27,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feat/migrate-to-ts-and-imporve" />
-                    <option name="lastUsedInstant" value="1678298813" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1678456552" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1678295913" />
+                    <option name="branchName" value="feat/migrate-to-ts-and-imporve" />
+                    <option name="lastUsedInstant" value="1678298813" />
                   </RecentBranch>
                 </list>
               </option>
@@ -101,7 +100,8 @@
       <workItem from="1678295822268" duration="1583000" />
       <workItem from="1678297467347" duration="21222000" />
       <workItem from="1678350045429" duration="3034000" />
-      <workItem from="1678393069574" duration="1701000" />
+      <workItem from="1678393069574" duration="2070000" />
+      <workItem from="1678456449784" duration="549000" />
     </task>
     <servers />
   </component>
