@@ -122,7 +122,6 @@ const BoardComponent = ({level}: BoardProps) => {
         return () => clearInterval(intervalRef.current);
     }, [gameOver]);
 
-
     useEffect(() => {
         if (!gameOver) {
             let winCount = 0
@@ -139,6 +138,7 @@ const BoardComponent = ({level}: BoardProps) => {
                 clearInterval(intervalRef.current);
             }
         }
+        // eslint-disable-next-line
     }, [board, gameOver]);
 
     return (
